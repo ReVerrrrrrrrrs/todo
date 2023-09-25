@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+     <!-- <link rel="stylesheet" href="css/index.css" /> -->
+     <style>body {
+        font-family: 'Arial', sans-serif;
+        background-color: #F7F9FC;
+        padding: 20px;
+      }
+      
+      li {
+        color: #333;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+      }
+      
+      li:hover {
+        background-color: #E4E7ED;
+      }
+      
+      .completed {
+        color: #A5ACB3;
+        text-decoration: line-through;
+      }
+      
+      input[type="text"], button {
+        padding: 10px;
+        border: 1px solid #D4D9E1;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+      
+      button {
+        background-color: #4C8EF7;
+        color: #FFF;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      button:hover {
+        background-color: #357ABD;
+      }</style>
+     <script>function add() {
+        const inputValue = document.getElementById("todo").value.trim();
+      
+        if (inputValue) {
+            const taskList = document.getElementById("todo_list");
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<span>${inputValue}</span>`;
+            listItem.onclick = markAsCompleted;  // 为新任务添加点击事件
+            taskList.appendChild(listItem);
+        }
+      
+        document.getElementById("todo").value = "";
+      }
+      
+      function markAsCompleted(event) {
+        const task = event.currentTarget;
+        if (task.classList.contains('completed')) {
+            task.classList.remove('completed');
+        } else {
+            task.classList.add('completed');
+        }
+      }</script>
+</head>
+<body>
+<div>
+    <input type="text" id="todo" placeholder="请输入你的任务名称">
+    <button onclick="add()">添加</button>
+</div>
+
+<div>
+    <ul id="todo_list">
+        <li><span>吃饭</span></li>
+        <li><span>学习</span></li>
+        <li><span>打篮球</span></li>
+    </ul>
+</div>
+</body>
+</html>
